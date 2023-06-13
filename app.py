@@ -18,6 +18,7 @@ from emojis_lib import emoji_dict
 # https://pastebin.com/raw/w0z7d5Wh
 # -------------------------------------------------------------------------------------------------------------
 CODE_TITLE='st_JY_smallColorEmojis1.py'
+CODE_TITLE='Raw-Emojis'
 CODE_VER='v 1.0'
 
 def main():
@@ -32,8 +33,6 @@ def main():
         with my_sidebar_expander00:
             st.write(CODE_TITLE)
     # ----------------------------------------------------------------------------------------------------
-
-
 
     # # Impor an input dictionary that contains emojis;
     df_dict=pd.DataFrame(emoji_dict.items(),columns=['name','emoji'])
@@ -79,13 +78,6 @@ def main():
     if search_emoji != '':
         with st.expander('Search Results:', expanded=True):
             if search_method=='Contain word':
-                                        # aaa=[word for word in search_emoji_list]
-                                        # bbb=[word for word in list(zip(*list(search_emoji_list)))]
-                                        # # bbb=[word for word in list(zip(*[['computer'],['coffee']]))]
-                                        # st.markdown(f'aaa: {aaa}')
-                                        # st.markdown(f'bbb: {bbb}')
-                                        # st.markdown(f'emoji_search_list: {search_emoji_list}')
-
                 st.subheader('Option 1:')  # 'Contain word'  # Ver1 (6/12/2023)
                 df_searched=pd.DataFrame()
                 for word in search_emoji_list:
@@ -95,16 +87,17 @@ def main():
                                         # df_searched=df_dict[df_dict['name'].str.contains(word) for word in search_emoji_list]
                 st.dataframe(df_searched)
 
-                st.subheader('Option 2: ')  # 'Contain word'  # Ver1 (6/12/2023)
-                df_searched=pd.DataFrame()
-                for i,search_word in enumerate(search_emoji_list):
-                                            # st.markdown(f'search_word: {search_word}')
-                    odf=df_dict['name'].apply(lambda sentence: any(word in sentence for word in [search_word]))
-                                            # st.markdown('odf:')
-                                            # st.dataframe(odf)
-                    df_searched_tmp=df_dict[odf]
-                    df_searched=pd.concat([df_searched, df_searched_tmp])
-                st.dataframe(df_searched)
+                # # Disabled - Ver1 (6/12/2023) (Working well, but decided to use Optioin 1 above.)
+#                 st.subheader('Option 2: ')  # 'Contain word'  # Ver1 (6/12/2023)
+#                 df_searched=pd.DataFrame()
+#                 for i,search_word in enumerate(search_emoji_list):
+#                                             # st.markdown(f'search_word: {search_word}')
+#                     odf=df_dict['name'].apply(lambda sentence: any(word in sentence for word in [search_word]))
+#                                             # st.markdown('odf:')
+#                                             # st.dataframe(odf)
+#                     df_searched_tmp=df_dict[odf]
+#                     df_searched=pd.concat([df_searched, df_searched_tmp])
+#                 st.dataframe(df_searched)
 
             elif search_method=='Exact word':
                 # st.subheader('Option 1:')
