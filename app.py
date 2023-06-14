@@ -86,18 +86,18 @@ def main():
                                         # st.markdown(f'aaa: {aaa}')
                                         # st.markdown(f'bbb: {bbb}')
                                         # st.markdown(f'emoji_search_list: {search_emoji_list}')
-
-                st.subheader('Option 1:')  # 'Contain word'  # Ver1 (6/12/2023)
-                df_searched=pd.DataFrame()
-                for word in search_emoji_list:
-                                            # st.markdown(f'word: {word}')
-                    df_searched_tmp=df_dict[df_dict['name'].str.contains(word)]
-                    df_searched=pd.concat([df_searched, df_searched_tmp])
-                                        # df_searched=df_dict[df_dict['name'].str.contains(word) for word in search_emoji_list]
-                if df_searched.empty:
-                    st.markdown(f'Not found')
-                else:
-                    st.dataframe(df_searched)
+                # Disabled - Ver1 (6/12/2023)              
+                # st.subheader('Option 1:')  # 'Contain word'  # Ver1 (6/12/2023)
+                # df_searched=pd.DataFrame()
+                # for word in search_emoji_list:
+                #                             # st.markdown(f'word: {word}')
+                #     df_searched_tmp=df_dict[df_dict['name'].str.contains(word)]
+                #     df_searched=pd.concat([df_searched, df_searched_tmp])
+                #                         # df_searched=df_dict[df_dict['name'].str.contains(word) for word in search_emoji_list]
+                # if df_searched.empty:
+                #     st.markdown(f'Not found')
+                # else:
+                #     st.dataframe(df_searched)
 
                 st.subheader('Option 2: ')  # 'Contain word'  # Ver1 (6/12/2023)
                 df_searched=pd.DataFrame()
@@ -142,16 +142,16 @@ def main():
                 #  etc., in addition to 'umbrella'.;
                 # ---------------------------------------------------------------------------------------------
                 # Disabled 'Option 2' -- Ver1 (6/12/2023)
-                st.subheader('Option 2: ')  # 'Exact word'  # Ver1 (6/12/2023)
-                df_searched=pd.DataFrame()
-                for i, search_word in enumerate(search_emoji_list):
-                    odf=df_dict['name'].apply(lambda sentence: all(word in sentence for word in [search_word]))
-                    df_searched_tmp=df_dict[odf]
-                    df_searched=pd.concat([df_searched,df_searched_tmp])
-                if df_searched.empty:
-                    st.markdown(f'Not found')
-                else:
-                    st.dataframe(df_searched)
+                # st.subheader('Option 2: ')  # 'Exact word'  # Ver1 (6/12/2023)
+                # df_searched=pd.DataFrame()
+                # for i, search_word in enumerate(search_emoji_list):
+                #     odf=df_dict['name'].apply(lambda sentence: all(word in sentence for word in [search_word]))
+                #     df_searched_tmp=df_dict[odf]
+                #     df_searched=pd.concat([df_searched,df_searched_tmp])
+                # if df_searched.empty:
+                #     st.markdown(f'Not found')
+                # else:
+                #     st.dataframe(df_searched)
 
     col1,col2=st.columns((6,4))
     with col1.expander('List of Emojis', expanded=True):
