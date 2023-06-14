@@ -1,6 +1,8 @@
-# emojis_lib.py - 6/07/2023
+# emojis_lib.py - 6/14, 6/07/2023
 # - Created for st_JY_smallColorEmojis0.py:
 # C:\Users\email\OneDrive\DesktopSP7\JY_pyTools\SmallColorEmojis\st_JY_smallColorEmojis0.py
+# - Total # of emojis: 1024 (6/14/2023)
+# - Added the "download" emoji (6/14/2023)
 # - Dictionary of 1623 emojis from:
 # https://raw.githubusercontent.com/omnidan/node-emoji/master/lib/emoji.json
 # https://pastebin.com/raw/w0z7d5Wh
@@ -892,6 +894,7 @@ emoji_dict={
    "chart":"💹",
    "seat":"💺",
    "computer":"💻",
+   "download":"📥",
    "briefcase":"💼",
    "minidisc":"💽",
    "floppy_disk":"💾",
