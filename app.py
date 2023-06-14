@@ -19,6 +19,7 @@ from emojis_lib import emoji_dict
 # https://pastebin.com/raw/w0z7d5Wh
 # -------------------------------------------------------------------------------------------------------------
 CODE_TITLE='st_JY_smallColorEmojis1.py'
+CODE_TITLE='Emojis'
 CODE_VER='v 1.0'
 
 def main():
