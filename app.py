@@ -52,11 +52,11 @@ def main():
                 Press 'Ctrl' + 'f' or '⌘ Cmd + f' to bring up the search bar in the "Table of Emoji Names".
         """)
 
-    search_emoji=st.text_input('Enter emoji name:', '',
+    search_emoji=st.text_input('Enter emoji name(s): (Note: case-sensitive)', '',
                             placeholder='Enter search word',
-                            # help="""You may enter multiple words with commas (,) such as
-                            #     "coffee, sparkles".
-                            # """
+                            help="""You may enter multiple words with commas (,) such as
+                                "coffee, sparkles".
+                            """
                             )
 
     # # (1) Convert a str into a list to work with pd.contains() later;
