@@ -1,14 +1,28 @@
 import streamlit as st
 import pandas as pd
-from emojis_lib import emoji_dict
+# from emojis_lib_20230614 import emoji_dict
+from emojis_lib_20230924 import emoji_dict
 
 
 # -------------------------------------------------------------------------------------------------------------
 # Renamed as app.py for deployment to streamlit cloud (6/12/2023)
-# # st_JY_smallColorEmojis1.py - Ver1 (6/14, 6/12/2023)
+# # st_JY_smallColorEmojis1.py - Ver1 (9/24, 6/14, 6/12/2023)
 # - Update:
 # (1) Upgraded a search feature -- Can search for multiple words with pd;
 # (2) Cosmetic updates (6/14/2023);
+# (3) Updated emojis_lib_20230924.py;
+
+
+# -------------------------------------------------------------------------------------------------------------
+# st_JY_smallColorEmojis1.py - Ver1 (6/14, 6/12/2023)
+# - Update:
+# (1) Upgraded a search feature -- Can search for multiple words with pd;
+# (2) Cosmetic updates (6/14/2023);
+# (3) Updated emojis_lib_20230924.py;
+# - Key references:
+# https://raw.githubusercontent.com/omnidan/node-emoji/master/lib/emoji.json
+# https://github.com/streamlit/emoji-shortcodes/blob/master/streamlit_app.py
+# https://streamlit-emoji-shortcodes-streamlit-app-gwckff.streamlit.app/
 
 
 # -------------------------------------------------------------------------------------------------------------
@@ -18,8 +32,8 @@ from emojis_lib import emoji_dict
 # C:\Users\email\OneDrive\DesktopSP7\py_strm\Ex_st_excel_webapp.py
 # https://pastebin.com/raw/w0z7d5Wh
 # -------------------------------------------------------------------------------------------------------------
-CODE_TITLE='st_JY_smallColorEmojis1.py'
-CODE_TITLE='Emojis'
+CODE_TITLE='Emojis for Streamlit App'
+# CODE_TITLE='st_JY_smallColorEmojis1.py'
 CODE_VER='v 1.0'
 
 def main():
@@ -43,15 +57,15 @@ def main():
         st.markdown(f'Number of Emojis: {len(df_dict.index)}')
         st.dataframe(df_dict)
 
-    with st.sidebar.expander('Source of emojis list:', expanded=False):
-    # st.markdown('Source of Emojis List:')
-        st.markdown('Updated emojis from:')
-        st.markdown('https://raw.githubusercontent.com/omnidan/node-emoji/master/lib/emoji.json')
-
     with st.sidebar.expander('How to search in the table',expanded=False):
         st.markdown("""
                 Press 'Ctrl' + 'f' or '⌘ Cmd + f' to bring up the search bar in the "Table of Emoji Names".
         """)
+
+    with st.sidebar.expander('Source of emojis list:', expanded=False):
+    # st.markdown('Source of Emojis List:')
+        st.markdown('Updated emojis from:')
+        st.markdown('https://raw.githubusercontent.com/omnidan/node-emoji/master/lib/emoji.json')
 
     search_emoji=st.text_input('Enter emoji name(s): (Note: case-sensitive)', '',
                             placeholder='Enter search word',
@@ -87,18 +101,21 @@ def main():
                                         # st.markdown(f'aaa: {aaa}')
                                         # st.markdown(f'bbb: {bbb}')
                                         # st.markdown(f'emoji_search_list: {search_emoji_list}')
-                # Disabled - Ver1 (6/12/2023)              
-                # st.subheader('Option 1:')  # 'Contain word'  # Ver1 (6/12/2023)
-                # df_searched=pd.DataFrame()
-                # for word in search_emoji_list:
-                #                             # st.markdown(f'word: {word}')
-                #     df_searched_tmp=df_dict[df_dict['name'].str.contains(word)]
-                #     df_searched=pd.concat([df_searched, df_searched_tmp])
-                #                         # df_searched=df_dict[df_dict['name'].str.contains(word) for word in search_emoji_list]
-                # if df_searched.empty:
-                #     st.markdown(f'Not found')
-                # else:
-                #     st.dataframe(df_searched)
+
+                # # Disabled 'Option 1' -- Ver1 (6/12/2023)
+                st.subheader('Option 1:')  # 'Contain word'  # Ver1 (6/12/2023)
+                df_searched=pd.DataFrame()
+                for word in search_emoji_list:
+                                            # st.markdown(f'word: {word}')
+                    df_searched_tmp=df_dict[df_dict['name'].str.contains(word)]
+                    df_searched=pd.concat([df_searched, df_searched_tmp])
+                                        # df_searched=df_dict[df_dict['name'].str.contains(word) for word in search_emoji_list]
+                if df_searched.empty:
+                    st.markdown(f'Not found')
+                else:
+                    st.markdown(f'Number of Found Emojis: {len(df_searched.index)}')
+                    st.dataframe(df_searched)
+
 
                 st.subheader('Option 2: ')  # 'Contain word'  # Ver1 (6/12/2023)
                 df_searched=pd.DataFrame()
@@ -112,6 +129,7 @@ def main():
                 if df_searched.empty:
                     st.markdown(f'Not found')
                 else:
+                    st.markdown(f'Number of Found Emojis: {len(df_searched.index)}')
                     st.dataframe(df_searched)
 
             elif search_method=='Exact word':
@@ -134,6 +152,7 @@ def main():
                     if df_searched.empty:
                         st.markdown(f'Not found')
                     else:
+                        st.markdown(f'Number of Found Emojis: {len(df_searched.index)}')
                         st.dataframe(df_searched)
 
                 # --------------------------------------------------------------------------------------------
@@ -142,18 +161,21 @@ def main():
                 #  Option 2 finds multiple results such as 'umbrella_with_rain_drops', 'closed_umbrella',
                 #  etc., in addition to 'umbrella'.;
                 # ---------------------------------------------------------------------------------------------
-                # Disabled 'Option 2' -- Ver1 (6/12/2023)
-                # st.subheader('Option 2: ')  # 'Exact word'  # Ver1 (6/12/2023)
-                # df_searched=pd.DataFrame()
-                # for i, search_word in enumerate(search_emoji_list):
-                #     odf=df_dict['name'].apply(lambda sentence: all(word in sentence for word in [search_word]))
-                #     df_searched_tmp=df_dict[odf]
-                #     df_searched=pd.concat([df_searched,df_searched_tmp])
-                # if df_searched.empty:
-                #     st.markdown(f'Not found')
-                # else:
-                #     st.dataframe(df_searched)
+                # # Disabled 'Option 2' -- Ver1 (6/12/2023)
+                st.subheader('Option 2: ')  # 'Exact word'  # Ver1 (6/12/2023)
+                df_searched=pd.DataFrame()
+                for i, search_word in enumerate(search_emoji_list):
+                    odf=df_dict['name'].apply(lambda sentence: all(word in sentence for word in [search_word]))
+                    df_searched_tmp=df_dict[odf]
+                    df_searched=pd.concat([df_searched,df_searched_tmp])
+                if df_searched.empty:
+                    st.markdown(f'Not found')
+                else:
+                    st.markdown(f'Number of Found Emojis: {len(df_searched.index)}')
+                    st.dataframe(df_searched)
 
+    # # Display emjois
+    st.markdown('')
     col1,col2=st.columns((6,4))
     with col1.expander('List of Emojis', expanded=True):
         c1,c2=st.columns((3,2))
