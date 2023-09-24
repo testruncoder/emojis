@@ -47,6 +47,7 @@ def main():
         my_sidebar_expander00=st.sidebar.expander('Code Title:',expanded=False)
         with my_sidebar_expander00:
             st.write(CODE_TITLE)
+            st.caption(CODE_VER)
     # ----------------------------------------------------------------------------------------------------
 
     # # Impor an input dictionary that contains emojis;
