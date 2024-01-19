@@ -68,6 +68,17 @@ def main():
         st.markdown('Updated emojis from:')
         st.markdown('https://raw.githubusercontent.com/omnidan/node-emoji/master/lib/emoji.json')
 
+    # # Ver1 (01/13/2024)
+    with st.sidebar.expander('References of Emojis List',expanded=False):
+        st.markdown('http://unicode.org/Public/emoji/12.0/emoji-test.txt')
+        st.markdown('https://www.geeksforgeeks.org/convert-emoji-into-text-in-python/?ref=lbp')
+        st.markdown('https://towardsdatascience.com/how-to-build-a-semantic-search-engine-for-emojis-ef4c75e3f7be')
+        st.markdown('https://try.fiftyone.ai/datasets/emojis/samples')
+        st.markdown('https://github.com/jacobmarks/emoji-search-plugin')
+        st.markdown('https://www.kaggle.com/datasets/subinium/emojiimage-dataset')
+
+    # ################ MAIN CODE BEGIND ############### #
+
     search_emoji=st.text_input('Enter emoji name(s): (Note: case-sensitive)', '',
                             placeholder='Enter search word',
                             help="""You may enter multiple words with commas (,) such as
