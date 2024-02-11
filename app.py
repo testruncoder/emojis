@@ -71,6 +71,8 @@ def main():
     # # Ver1 (01/13/2024)
     with st.sidebar.expander('References of Emojis List',expanded=False):
         st.markdown('http://unicode.org/Public/emoji/12.0/emoji-test.txt')
+        st.markdown('https://emojidb.org/')
+        st.markdown('')
         st.markdown('https://www.geeksforgeeks.org/convert-emoji-into-text-in-python/?ref=lbp')
         st.markdown('https://towardsdatascience.com/how-to-build-a-semantic-search-engine-for-emojis-ef4c75e3f7be')
         st.markdown('https://try.fiftyone.ai/datasets/emojis/samples')
